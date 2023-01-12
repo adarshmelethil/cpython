@@ -76,6 +76,10 @@ Fault handler state
    .. versionchanged:: 3.6
       On Windows, a handler for Windows exception is also installed.
 
+   .. versionchanged:: 3.10
+      The dump now mentions if a garbage collector collection is running
+      if *all_threads* is true.
+
 .. function:: disable()
 
    Disable the fault handler: uninstall the signal handlers installed by
@@ -162,10 +166,10 @@ handler:
 
 .. code-block:: shell-session
 
-    $ python3 -c "import ctypes; ctypes.string_at(0)"
+    $ python -c "import ctypes; ctypes.string_at(0)"
     Segmentation fault
 
-    $ python3 -q -X faulthandler
+    $ python -q -X faulthandler
     >>> import ctypes
     >>> ctypes.string_at(0)
     Fatal Python error: Segmentation fault
